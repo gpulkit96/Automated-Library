@@ -1,0 +1,6 @@
+{% extends "home/header.html"%}
+{% block content %}
+	{%for post in object_list%}
+		<h5>{{post.date|date:"Y-m-d" }}<a href="/catalogue/{{post.id}}"> {{post.Title}} </a></h5>
+	{%endfor%}
+{% endblock %}
