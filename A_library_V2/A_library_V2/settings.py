@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'catalogue',
+    'member',
     'home',
     'django.contrib.admin',
     'django.contrib.auth',

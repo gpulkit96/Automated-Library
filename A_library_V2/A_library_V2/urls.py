@@ -20,6 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('home.urls')),
     url(r'^catalogue/', include('catalogue.urls')),
-    url(r'^member/', include('catalogue.urls2')),
-
+    url(r'^member/', include('member.urls')),
 ]
