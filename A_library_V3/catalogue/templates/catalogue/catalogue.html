@@ -12,8 +12,18 @@
         		<option>Author</option>
         		<option>Genre</option>
         		<option>Call Num</option>
+                <option>Publisher</option>
       		</select>
     	</div>
+        <div class="col-sm-2" > 
+            <select class="form-control" id="s1" name="i" value= '{{request.GET.i}}'>
+                <option selected="selected">Entries</option>
+                <option>1-15</option>
+                <option>1-30</option>
+                <option>1-50</option>
+                <option>All</option>
+            </select>
+        </div>
     	<div class="col-sm-2">
       		<input type='submit'  class="form-control" value='Search'/>
     	</div>
@@ -26,8 +36,24 @@
         	<hr class="style13">
         </div>
     </div>
-    {% for post in object_list %}
-    	<h5><b>ID: </b>{{ post.id }} <b>Author: </b>{{ post.Author }} <b>Title:</b> <a href="/catalogue/{{post.id}}">{{ post.Title }}</a></h5>
-
-    {% endfor %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Publisher</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for post in object_list %}
+                <tr>
+        	       <h5><td>{{ post.id }}</td>
+                   <td>{{ post.Author }}</td>
+                   <td><a href="/catalogue/{{post.id}}">{{ post.Title }}</a></td>
+                   <td>{{ post.Publisher }}</td></h5>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

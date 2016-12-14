@@ -72,10 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'A_library_V2.wsgi.application'
 
-TEMPLATE_LOADERS = [
-    'django.template.loaders.filesystem.Loader'
-
-]
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
