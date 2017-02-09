@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('CallNum', models.CharField(max_length=140)),
+                ('Barcode', models.CharField(max_length=140)),
                 ('Genre', models.CharField(max_length=140)),
                 ('Title', models.CharField(max_length=140)),
                 ('Author', models.CharField(max_length=140)),

@@ -10,14 +10,21 @@ class IndexView(generic.ListView):
 		queryset_list =Member.objects.all().order_by("-date")
 		query = self.request.GET.get("q")
 		filter_q =  self.request.GET.get("f")
+		noviews = self.request.GET.get("i")
 		if query:
 			if filter_q=="Name":
 				queryset_list = queryset_list.filter(Name__icontains =query)
 			elif filter_q=="RollNo":
-				queryset_list = queryset_list.filter(RollNo__icontains =query)
+				queryset_list = queryset_list.filter(Class__icontains =query)
 			elif filter_q=="Status":
 				queryset_list = queryset_list.filter(Status__icontains =query)
-		return queryset_list
+		if noviews=="1-30":
+			return queryset_list[:20]
+		elif noviews=="1-50":
+			return queryset_list[:50]
+		elif noviews=="All":
+			return queryset_list
+		return queryset_list[:10]
 
 class DetailView(generic.DetailView):
 	model=Member

@@ -10,16 +10,23 @@ class IndexView(generic.ListView):
 		queryset_list =Post.objects.all().order_by("-date")
 		query = self.request.GET.get("q")
 		filter_q =  self.request.GET.get("f")
+		noviews = self.request.GET.get("i")
 		if query:
 			if filter_q=="Title":
 				queryset_list = queryset_list.filter(Title__icontains =query)
 			elif filter_q=="Author":
 				queryset_list = queryset_list.filter(Author__icontains =query)
 			elif filter_q=="Genre":
-				queryset_list = queryset_list.filter(Genre__icontains =query)
+				queryset_list = queryset_list.filter(Subject__icontains =query)
 			elif filter_q=="CallNum":
 				queryset_list = queryset_list.filter(CallNum__icontains =query)
-		return queryset_list
+		if noviews=="1-30":
+			return queryset_list[:30]
+		elif noviews=="1-50":
+			return queryset_list[:50]
+		elif noviews=="All":
+			return queryset_list
+		return queryset_list[:15]
 class DetailView(generic.DetailView):
 	model = Post
 	template_name = "catalogue/post.html"
