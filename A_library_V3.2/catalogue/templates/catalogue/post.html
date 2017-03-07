@@ -1,0 +1,13 @@
+{% extends "home/header.html"%}
+{% block content %}
+	<h3>{{post.Title}}</h3>	<h6>on {{post.date}}</h6>
+	<p>hidden date: {{post.hidden_date}}</p>
+	<p>Genre: {{post.Genre}}</p>
+	<p>Author: {{post.Author}}</p>
+	<p>Call Num: {{post.CallNum}}</p>
+	{% if post.Status != 'N/A' %}
+        <p>Issued to </p><a href="/member/{{post.Status}}">{{ post.member_Name}}</a>
+    {% else %}
+    	<p>Available</p>
+    {% endif %}
+{% endblock %}
